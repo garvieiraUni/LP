@@ -1,16 +1,18 @@
 #include <stdio.h>
-//combustivel 2,90
+
 int main(){
-    float kmi, kmf, l, vt, cons, lucro;
-    printf("Digite a marcação do odômetro no inicio do dia:");
-    scanf("%f",&kmi);
-    printf("Digite a marcação do odômetro no fim do dia:");
-    scanf("%f",&kmf);
-    printf("Digite o total de litros de combustível gasto:");
-    scanf("%f",&l);
-    printf("Digite o valor total recebido dos passageiros:");
-    scanf("%f",&vt);
-    cons = (kmf-kmi)/l;
-    lucro = vt - l*2.90;
-    printf("o consumo do médio foi de %.0f km/l, enquanto o lucro foi de R$%.2f",cons,lucro);
+    int vet1[10], vet2[10], i, cont=0;
+    for(i=0;i<10;i++){
+        printf("Digite um valor inteiro: ");
+        scanf("%d",&vet1[i]);
+        if((vet1[i]%2)!=0){
+            vet2[cont]=vet1[i];
+            cont ++;
+        }
+    }
+    for(i=0;i<10;i++){
+        if(i>cont)
+            vet2[i] = 0;
+        printf("%d, %d\n", vet1[i], vet2[i]);
+    }
 }

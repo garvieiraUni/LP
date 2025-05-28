@@ -1,18 +1,15 @@
 #include <stdio.h>
 
 int main(){
-    int comprimento, voltas, reabastecimentos; 
-    float consumo, Nreab, Nmin;
-    printf("Digite o comprimento da pista em metros:");
-    scanf("%i",&comprimento);
-    printf("Digite o número de voltas do circuito:");
-    scanf("%i",&voltas);
-    printf("Digite o número de reabastecimnetos planejados:");
-    scanf("%i",&reabastecimentos);
-    printf("Digite o consumo do carro em km/l:");
-    scanf("%f",&consumo);
-    comprimento = comprimento/1000;
-    Nreab = voltas/reabastecimentos;
-    Nmin = (Nreab*comprimento)/consumo;
-    printf("O combustível mínimo por abastecimento é: %.0fl", Nmin); 
+    int a[10], b[10], c[10], i;
+    for(i=0;i<10;i++){
+        printf("Digite um valor para A[%d]: ", i+1);
+        scanf("%d", &a[i]);
+        printf("Digite um valor para B[%d]: ", i+1);
+        scanf("%d", &b[i]);
+        c[i] = a[i] - b[i];
+    }
+    printf("\n");
+    for(i=0;i<10;i++)
+        printf("C[%d]: %d | A[%d]: %d - B[%d]: %d\n", i+1, c[i], i+1, a[i], i+1, b[i]);
 }
