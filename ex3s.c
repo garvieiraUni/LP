@@ -6,38 +6,28 @@
 #define MAXBC 20
 
 char troca(char A[MAXA], char B[MAXBC], char C[MAXBC]){
-    char *refer=strstr(A,B);
-    int i, j, pos, cont=0;
-    if(refer != NULL){
-        pos = refer - A;
-        if(strlen(B)>strlen(C)){
-            for(i=pos;i<strlen(A);i++){
-                if(C[cont]!='\0'){
-                    A[i] = C[cont];
-                } else {
-                    for(j=i;j<strlen(A);j++){  
-                        A[i] = A[i+1];
-                    }
+    char *refer=strstr(A,B), resultado[MAXA*3];
+    int i, j, cont;
+    do{
+        for (i = 0, j = 0; i < strlen(A); i++){
+            if(&A[i] == refer){
+                for(cont = 0; cont < strlen(C); cont++){
+                    resultado[j] = C[cont];
+                    j++;
                 }
-                cont++;
-            }
-        } else if(strlen(C)>strlen(B)){
-            for(i=pos;i<strlen(A);i++){
-                if(B[cont] != '\0'){
-                    A[i] = C[cont];
-                } else {
-                    printf("%d", strlen(A));
-                    for(j=strlen(A);j>i;j--){
-                        A[j] = A[j-1];
-                        printf("j:%d A[j]:%s A[j+1]:%s\n",j,A[j],A[j+1]);
-                    }
-                    A[i] = C[cont];
-                }
-                cont++;
+                i += strlen(B) - 1;
+            } else {
+                resultado[j++] = A[i];
             }
         }
-        puts(A);
-    }
+        resultado[j] = '\0';
+        for(i = 0; i < j; i++){
+            A[i] = resultado[i];
+            A[j] = '\0';
+        }
+        refer = strstr(A, B);
+    }while(refer != NULL);
+    puts(resultado);
 }
 
 int main(){
