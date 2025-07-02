@@ -108,7 +108,7 @@ int jog_medio(int *linha, int *coluna, int tab[3][3], int fig){
 
         //verifica diagonais do adversario
         if (tab[0][0] == tab[1][1] || tab[1][1] == tab[2][2] || tab[0][0] == tab[2][2] && vef == 0){
-            if(tab[0][0]==fig||tab[1][1]==fig||tab[2][2]==fig){
+            if(tab[0][0]!=fig||tab[1][1]!=fig||tab[2][2]!=fig){
                 for(i=0;i<3;i++){
                     if(tab[i][i]==0){
                         *linha = i;
@@ -119,7 +119,7 @@ int jog_medio(int *linha, int *coluna, int tab[3][3], int fig){
             }
         }
         else if (tab[0][2] == tab[1][1] || tab[1][1] == tab[2][0] || tab[0][2] == tab[2][0] && vef == 0){
-            if(tab[0][2]==fig||tab[1][1]==fig||tab[2][0]==fig){
+            if(tab[0][2]!=fig||tab[1][1]!=fig||tab[2][0]!=fig){
                 for(i=0;i<3;i++){
                     if(i==0)
                         j=2;
@@ -143,7 +143,7 @@ int jog_medio(int *linha, int *coluna, int tab[3][3], int fig){
             for(j=0;j<3;j++){
                 if(tab[i][j]==fig){
                     if(j==1){
-                        if(tab[i][j+1]==0 && vef==0){
+                        if(tab[i][j+1]==0){
                             *linha = i;
                             *coluna = j+1;
                             vef=1;
@@ -161,7 +161,7 @@ int jog_medio(int *linha, int *coluna, int tab[3][3], int fig){
                             vef=1;
                         }
                     }
-                    else if(j==1){
+                    else if(j==2){
                         if(tab[i][j-1]==0 && vef==0){
                             *linha = i;
                             *coluna = j-1;

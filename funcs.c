@@ -36,7 +36,7 @@ int cond_vitoria(int tab[3][3], int*vit){
         *vit = 2;
 }
 
-int jogada(int*l, int*c, int tab[3][3]){
+void jogada(int*l, int*c, int tab[3][3]){
     int linha, coluna, valida=1;
     while(valida == 1){
         printf("escolha a linha(1-3): ");
@@ -90,6 +90,6 @@ int figura(int*fig_bot){
     if(fig==1)
         *fig_bot=2;
     else
-        *fig_bot==1;
+        *fig_bot=1;
     return fig;
 }
