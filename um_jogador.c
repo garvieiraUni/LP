@@ -53,7 +53,7 @@ void jogo(){
                     if(dif==1)
                         jog_facil(&linha, &coluna, tabuleiro);
                     else if(dif==2)
-                        jog_medio(&linha, &coluna, tabuleiro, fig);
+                        jog_medio(&linha, &coluna, tabuleiro, fig_bot);
                 }
             }
             else if(turno==2){

@@ -36,7 +36,7 @@ int cond_vitoria(int tab[3][3], int*vit){
         *vit = 2;
 }
 
-void jogada(int*l, int*c, int tab[3][3]){
+int jogada(int*l, int*c, int tab[3][3]){
     int linha, coluna, valida=1;
     while(valida == 1){
         printf("escolha a linha(1-3): ");
@@ -73,7 +73,7 @@ int dificuldade(){
     return dif;
 }
 
-int figura(int*fig_bot){
+int figura(int *fig_bot){
     int fig;
     printf("Escolha a figura:\n1-X\n2-O\n--> ");
     scanf("%d", &fig);
