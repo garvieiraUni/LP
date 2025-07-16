@@ -243,3 +243,109 @@ void jog_medio(int *linha, int *coluna, int tab[3][3], int fig){
         }
     }
 }
+
+int jog_dificil(int *linha, int *coluna, int tab[3][3], int fig, int cont, int caso){
+    int i, j;
+
+    // jogando de X
+    if(fig==1){
+        // 1º turno
+        printf("\n-------CONT:%d-----",cont);
+        if(cont==1){
+            *linha = 0;
+            *coluna = 0;
+            caso = 0;                
+        }
+        // 2º turno - definindo os casos
+        else if(cont==2){
+            if(tab[1][1]==2){
+                *linha = 2;
+                *coluna = 2;
+                caso = 1;
+            }
+            else if(tab[0][1]==2||tab[1][0]==2||tab[1][2]==2||tab[2][1]==2){
+                *linha = 1;
+                *coluna = 1;
+                caso = 2;
+            }
+            else if(tab[0][2]==2||tab[2][0]==2){
+                *linha = 2;
+                *coluna = 2;
+                caso = 3;
+            }
+            else if(tab[2][2]==2){
+                *linha = 2;
+                *coluna = 0;
+                caso = 4;
+            }
+        }else{
+            //casos definidos, jogadas se baseiam neles
+            switch(caso){
+                // para caso 1 (bolinha no meio)
+                case 1:
+                    if(cont==3){
+                        if(tab[0][2]==2){
+                            *linha = 2;
+                            *coluna = 0;
+                        }
+                        else if(tab[2][0]==2){
+                            *linha = 0;
+                            *coluna = 2;
+                        }else
+                            jog_medio(&*linha, &*coluna, tab, fig);
+                    }else
+                        jog_medio(&*linha, &*coluna, tab, fig);
+                    caso = 1;
+                // para caso 2(bolinha nas pontas)
+                case 2:
+                    if(cont==3){
+                        if(tab[2][2]==2){
+                            if(tab[1][2]!=tab[1][0]){//verifica se jogou em alguma ponta da lateral
+                                *linha = 0;
+                                *coluna = 2;
+                            }
+                            else{
+                                *linha = 2;
+                                *coluna = 0;
+                            }
+                        }else
+                            jog_medio(&*linha, &*coluna, tab, fig);
+                    }else
+                        jog_medio(&*linha, &*coluna, tab, fig);
+                    caso = 2;
+                //caso 3(bolinha nos cantos não opostos)
+                case 3:
+                    if(cont==3){
+                        if(tab[1][1]==2){
+                            if(tab[0][2]==2){
+                                *linha = 2;
+                                *coluna = 0;
+                            }
+                            else{
+                                *linha = 0;
+                                *coluna = 2;
+                            }
+                        }else
+                            jog_medio(&*linha, &*coluna, tab, fig);
+                    }else
+                        jog_medio(&*linha, &*coluna, tab, fig);
+                    caso = 3;
+                //caso 4(bolinha no canto oposto)
+                case 4:
+                    if(cont==3){
+                        if(tab[1][0]==2){
+                            *linha = 0;
+                            *coluna = 2;
+                        }else
+                            jog_medio(&*linha, &*coluna, tab, fig);
+                    }else
+                        jog_medio(&*linha, &*coluna, tab, fig);
+                    caso = 4;
+            }
+        }
+    //jogando de O
+    }else
+        jog_medio(&*linha, &*coluna, tab, fig);
+    printf("cont:%d, caso:%d\n",cont,caso);
+    return caso;
+}
