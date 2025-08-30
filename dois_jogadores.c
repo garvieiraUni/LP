@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <windows.h>
 #include "funcs.c"
 
 void jogom(){
+    system("cls");
     int tabuleiro[3][3] = {
         {0, 0, 0},
         {0, 0, 0},
@@ -12,10 +14,13 @@ void jogom(){
     int vitoria=0, cont_emp=0;
 
     printf("\njogador 1(x) e jogador 2(o)\n");
+    Sleep(1500);
     while(vitoria == 0){
+        Sleep(150);
+        system("cls");
+        Sleep(150);
         cont_emp = 0;
         cond_vitoria(tabuleiro, &vitoria);
-        printf("Vitoria: %d\n", vitoria);
         printf("Tabuleiro:\n");
         for(i=0;i<3;i++){
             if(i!=0){
@@ -41,15 +46,22 @@ void jogom(){
         }
         if(vitoria == 0){
             if(cont_emp == 9){
+                Sleep(1000);
                 printf("\nDeu velha!\n");
+                Sleep(1700);
+                system("cls");
                 break;
             }
             if(turno==1){
+                Sleep(500);
                 printf("\neh a vez do jogador 1(x)!\n");
+                Sleep(1000);
                 jogada(&linha, &coluna, tabuleiro);
             }
             else if(turno==2){
+                Sleep(500);
                 printf("\neh a vez do jogador 2(O)!\n");
+                Sleep(1000);
                 jogada(&linha, &coluna, tabuleiro);
             }
         }
@@ -59,11 +71,17 @@ void jogom(){
         else if(turno==2)
             turno=1;
         if (vitoria == 1){
+            Sleep(1000);
             printf("\nParabens jogador 1(x), voce venceu!\n");
+            Sleep(1700);
+            system("cls");
             break;
         }
         else if(vitoria == 2){
+            Sleep(1000);
             printf("\nParabens jogador 2(o), voce venceu!\n");
+            Sleep(1700);
+            system("cls");
             break;
         }
     }

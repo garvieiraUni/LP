@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <windows.h>
 
 int cond_vitoria(int tab[3][3], int*vit){
     int i, j; 
@@ -52,7 +53,9 @@ int jogada(int*l, int*c, int tab[3][3]){
             scanf("%d", &coluna);
         }
         if(tab[linha-1][coluna-1] == 0){
+            system("cls");
             printf("jogada computada!\n");
+            Sleep(800);
             valida = 0;
     }
         else
@@ -82,10 +85,16 @@ int figura(int *fig_bot){
         scanf("%d", &fig);
     }
     if(fig == 1){
+        system("cls");
         printf("Voce escolheu X!\n");
+        Sleep(1700);
+        system("cls");
     }
     else if(fig == 2){
+        system("cls");
         printf("Voce escolheu O!\n");
+        Sleep(1700);
+        system("cls");
     }
     if(fig==1)
         *fig_bot=2;

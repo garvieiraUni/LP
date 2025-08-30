@@ -5,6 +5,7 @@
 
 int main(){
     int modo;
+    system("cls");
     printf("\nEscolha o modo de jogo:\n1-Jogar contra o computador\n2-Jogar contra outro jogador\n0-sair\n--> ");
     scanf("%d", &modo);
     while(modo<0 || modo>2){
